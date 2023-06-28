@@ -1,10 +1,21 @@
 name: hello-world
-on: push
+'on': push
 jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Print Hello, World!
+      - name: 'Print Hello, World!'
         run: node hello.js
+      - name: Fetch Commit Author
+        run: |
+
+          commit_author=$(git log -1 --pretty=format:'%an')
+
+          echo "Commit Author: $commit_author"
+      - name: Echo Author in GitHub Actions
+        run: |
+
+          echo "Commit Author: ${{ github.actor }}"
+
