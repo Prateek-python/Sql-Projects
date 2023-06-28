@@ -4,9 +4,12 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo "Hello World!"
-      - name: get-helloworld
-        run: cat {{ with . }}helloworld.txt{{ end }}
+      - name: get-commit-hash
+        run: echo "${GITHUB_SHA}"
+      - name: get-committed-file
+        run: |
+          echo "The contents of the committed file are:"
+          cat "$(git show $GITHUB_SHA | grep -Eo '^diff --git a/.* b/.*')"
+
 
 
