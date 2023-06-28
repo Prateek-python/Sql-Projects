@@ -7,4 +7,6 @@ jobs:
       - name: my-step
         run: echo "Hello World!"
       - name: get-helloworld
-        run: cat helloworld.txt
+        run: cat {{ with . }}helloworld.txt{{ end }}
+
+
