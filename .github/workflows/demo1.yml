@@ -5,4 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
-        run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+        run: echo "### Hello world!
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }}
